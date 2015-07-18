@@ -1,0 +1,67 @@
+﻿
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.top-header {
+	float:left;
+	font-size:36px;
+	padding:20px;
+	width:100%;
+	text-transform:uppercase;
+	background-color:#282830;
+	color:#fff;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+body {
+	background: url(Images/bg.png) repeat;
+	font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+    padding-bottom: 20px;
+}
+
+.info-form {
+	display:block;
+	margin:100px auto;
+	width:800px;
+}
+
+.info-form .statistic {
+	margin: 50px auto;
+	max-width:400px;
+	border-radius: 0 0 5px 5px;
+	background-color: #FFFFFF;
+}
+
+.info-form .chart {
+	background-color:#fff;
+}
+
+.info-form .content {
+	padding-left: 5px;
+	padding-bottom: 5px;
+	padding-right: 5px;
+	border-radius: 0 0 5px 5px;
+}
+
+.info-form h1 {
+	background-color: #282830;
+  	border-radius: 5px 5px 0 0;
+  	color: #fff;
+  	font-size: 16px;
+  	padding: 20px;
+  	text-align: center;
+  	text-transform: uppercase
+}
+

@@ -1,0 +1,38 @@
+﻿@model WebCrawler.Models.StatisticModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="info-form">
+    <div class="statistic">
+        <h1>Статистика</h1>
+        <div class="content">
+            <table width="100%">
+                <tr>
+                    <td width="50%">Сейчас в базе:</td>
+                    <td width="50%">@Model.RecordsCount записей</td>
+                </tr>
+                <tr>
+                    <td>Последнее обновление:</td>
+                    <td>@Model.LastUpdateTime.ToLongDateString() в @Model.LastUpdateTime.ToShortTimeString()</td>
+                </tr>
+                <tr>
+                    <td>Информация о группе:</td>
+                    <td>@Model.GroupName</td>
+                </tr>
+                <tr>
+                    <td>Ссылка на группу:</td>
+                    <td><a href="@Model.GroupUrl">@Model.GroupUrl</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="chart">
+        <h1>График</h1>
+        <div class="content">
+            <img src="~/Images/chart.png"  width="100%"/>
+        </div>
+
+    </div>
+</div>
