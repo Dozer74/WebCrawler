@@ -12,11 +12,11 @@ namespace WebCrawler.Controllers
         public ActionResult Index()
         {
             var stat = entities.Statistic.ToList();
-            var dates = stat.Select(s => s.UpdatingTime.ToLongDateString()).ToArray();
-            var values = stat.Select(s => s.MembersCount).ToArray();
+            var dates = stat.Select(st => st.UpdatingTime.ToLongDateString()+" в "+st.UpdatingTime.ToShortTimeString()).ToArray();
+            var values = stat.Select(st => st.MembersCount).ToArray();
 
-            var yMin = values.Min()-1;
-            var yMax = values.Max()+1;
+            var yMin = values.Min()-50;
+            var yMax = values.Max()+50;
 
             new Chart(800, dates.Length*100)
                 .AddSeries(chartType: "bar",
@@ -30,7 +30,7 @@ namespace WebCrawler.Controllers
                 GroupName = entities.GroupInfo.FirstOrDefault()?.GroupName,
                 GroupUrl = entities.GroupInfo.FirstOrDefault()?.GroupUrl,
                 RecordsCount = dates.Length,
-                LastUpdateTime = stat.Max(s => s.UpdatingTime)
+                LastUpdateTime = stat.Max(st => st.UpdatingTime)
             };
 
             return View(model);
