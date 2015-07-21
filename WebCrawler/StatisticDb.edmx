@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище StatisticDbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище StatisticModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="GroupInfo">
           <Key>
             <PropertyRef Name="Id" />
@@ -21,14 +21,23 @@
           <Property Name="UpdatingTime" Type="datetime" Nullable="false" />
           <Property Name="MembersCount" Type="int" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="Хранилище StatisticDbModelContainer">
+        <EntityContainer Name="Хранилище StatisticModelContainer">
           <EntitySet Name="GroupInfo" EntityType="Self.GroupInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Statistic" EntityType="Self.Statistic" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="StatisticDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="StatisticModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GroupInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GroupName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="Statistic">
           <Key>
             <PropertyRef Name="Id" />
@@ -37,39 +46,31 @@
           <Property Name="UpdatingTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="MembersCount" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="StatisticDbEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="StatisticEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GroupInfo" EntityType="Self.GroupInfo" />
           <EntitySet Name="Statistic" EntityType="Self.Statistic" />
-          <EntitySet Name="GroupInfo" EntityType="StatisticDbModel.GroupInfo" />
         </EntityContainer>
-        <EntityType Name="GroupInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GroupUrl" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище StatisticDbModelContainer" CdmEntityContainer="StatisticDbEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище StatisticModelContainer" CdmEntityContainer="StatisticEntities">
+          <EntitySetMapping Name="GroupInfo">
+            <EntityTypeMapping TypeName="StatisticModel.GroupInfo">
+              <MappingFragment StoreEntitySet="GroupInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GroupUrl" ColumnName="GroupUrl" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Statistic">
-            <EntityTypeMapping TypeName="StatisticDbModel.Statistic">
+            <EntityTypeMapping TypeName="StatisticModel.Statistic">
               <MappingFragment StoreEntitySet="Statistic">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UpdatingTime" ColumnName="UpdatingTime" />
                 <ScalarProperty Name="MembersCount" ColumnName="MembersCount" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GroupInfo">
-            <EntityTypeMapping TypeName="StatisticDbModel.GroupInfo">
-              <MappingFragment StoreEntitySet="GroupInfo">
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="GroupUrl" ColumnName="GroupUrl" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -88,7 +89,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>

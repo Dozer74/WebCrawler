@@ -13,10 +13,10 @@ namespace WebCrawler
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class StatisticDbEntities : DbContext
+    public partial class StatisticEntities : DbContext
     {
-        public StatisticDbEntities()
-            : base("name=StatisticDbEntities")
+        public StatisticEntities()
+            : base("name=StatisticEntities")
         {
         }
     
@@ -25,7 +25,7 @@ namespace WebCrawler
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Statistic> Statistic { get; set; }
         public virtual DbSet<GroupInfo> GroupInfo { get; set; }
+        public virtual DbSet<Statistic> Statistic { get; set; }
     }
 }

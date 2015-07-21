@@ -7,13 +7,25 @@ namespace WebCrawler.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly StatisticDbEntities entities = new StatisticDbEntities();
+        private readonly StatisticEntities entities = new StatisticEntities();
         // GET: Home
         public ActionResult Index()
         {
             var stat = entities.Statistic.ToList();
             var dates = stat.Select(st => st.UpdatingTime.ToLongDateString()+" в "+st.UpdatingTime.ToShortTimeString()).ToArray();
             var values = stat.Select(st => st.MembersCount).ToArray();
+
+            if (values.Count() == 0)// В базе нет данных
+            {
+                var emptyModel = new StatisticModel
+                {
+                    GroupName = "База данных пуста!",
+                    GroupUrl = "База данных пуста!",
+                    RecordsCount = 0
+                };
+                return View(emptyModel);
+            }
+
 
             var yMin = values.Min()-50;
             var yMax = values.Max()+50;

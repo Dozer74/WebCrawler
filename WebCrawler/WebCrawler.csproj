@@ -91,10 +91,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\StatisticDb.mdf" />
-    <Content Include="App_Data\StatisticDb_log.ldf">
-      <DependentUpon>StatisticDb.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\bg.png" />
@@ -108,15 +104,15 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Statistic.Context.tt">
+    <Content Include="StatisticDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Statistic.edmx</DependentUpon>
-      <LastGenOutput>Statistic.Context.cs</LastGenOutput>
+      <DependentUpon>StatisticDb.edmx</DependentUpon>
+      <LastGenOutput>StatisticDb.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Statistic.tt">
+    <Content Include="StatisticDb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Statistic.edmx</DependentUpon>
-      <LastGenOutput>Statistic1.cs</LastGenOutput>
+      <DependentUpon>StatisticDb.edmx</DependentUpon>
+      <LastGenOutput>StatisticDb.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -128,45 +124,45 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GroupInfo.cs">
-      <DependentUpon>Statistic.tt</DependentUpon>
+      <DependentUpon>StatisticDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StatisticModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Statistic.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Statistic.Context.tt</DependentUpon>
-    </Compile>
     <Compile Include="Statistic.cs">
-      <DependentUpon>Statistic.tt</DependentUpon>
+      <DependentUpon>StatisticDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Statistic.Designer.cs">
+    <Compile Include="StatisticDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Statistic.edmx</DependentUpon>
+      <DependentUpon>StatisticDb.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Statistic1.cs">
+    <Compile Include="StatisticDb.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Statistic.tt</DependentUpon>
+      <DependentUpon>StatisticDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StatisticDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatisticDb.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <EntityDeploy Include="Statistic.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Statistic.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Statistic.edmx.diagram">
-      <DependentUpon>Statistic.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <EntityDeploy Include="StatisticDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StatisticDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="StatisticDb.edmx.diagram">
+      <DependentUpon>StatisticDb.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -175,6 +171,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
