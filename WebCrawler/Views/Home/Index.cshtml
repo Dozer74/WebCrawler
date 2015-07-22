@@ -1,6 +1,8 @@
-﻿@model WebCrawler.Models.StatisticModel
+﻿@using System.Globalization
+@using System.Linq
+@model WebCrawler.Models.StatisticModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Crawler";
 }
 
 <div class="info-form">
@@ -28,10 +30,22 @@
         </div>
     </div>
 
-    <div class="chart">
-        <h1>График</h1>
+    <div class="table-details">
+        <h1>Подробно</h1>
         <div class="content">
-            <img src="~/Images/chart.png"  width="100%"/>
+            <table width="100%">
+                <tr>
+                    <th>Время</th>
+                    <th>Подписчиков</th>
+                </tr>
+                @foreach (var record in Model.Records.Reverse())
+                {
+                    <tr>
+                        <td style="text-align: center">@record.UpdatingTime.ToString("dd MMMM в HH:mm",CultureInfo.CreateSpecificCulture("ru-RU"))</td>
+                        <td style="text-align: center">@record.MembersCount</td>
+                    </tr>
+                }
+            </table>
         </div>
 
     </div>

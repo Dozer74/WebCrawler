@@ -34,7 +34,7 @@ body {
 .info-form {
 	display:block;
 	margin:100px auto;
-	width:800px;
+	width:400px;
 }
 
 .info-form .statistic {
@@ -44,7 +44,7 @@ body {
 	background-color: #FFFFFF;
 }
 
-.info-form .chart {
+.info-form .table-details {
 	background-color:#fff;
 }
 
@@ -63,5 +63,10 @@ body {
   	padding: 20px;
   	text-align: center;
   	text-transform: uppercase
+}
+
+.content p {
+    color: red;
+    text-align: center;
 }
 

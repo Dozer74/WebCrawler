@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace WebCrawler.Models
 {
@@ -8,5 +9,6 @@ namespace WebCrawler.Models
         public int RecordsCount { get; set; }
         public DateTime LastUpdateTime { get; set; }
         public string GroupUrl { get; set; }
+        public IEnumerable<DataModel> Records { get; set; }  
     }
 }
