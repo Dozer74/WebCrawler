@@ -6,7 +6,7 @@
 }
 
 <div class="info-form">
-    <div class="statistic">
+    <div class="block">
         <h1>Статистика</h1>
         <div class="content">
             <table width="100%">
@@ -16,7 +16,7 @@
                 </tr>
                 <tr>
                     <td>Последнее обновление:</td>
-                    <td>@Model.LastUpdateTime.ToLongDateString() в @Model.LastUpdateTime.ToShortTimeString()</td>
+                    <td>@Model.LastUpdateTime.ToString("dd MMMM в HH:mm", CultureInfo.CreateSpecificCulture("ru-RU"))</td>
                 </tr>
                 <tr>
                     <td>Информация о группе:</td>
@@ -24,27 +24,47 @@
                 </tr>
                 <tr>
                     <td>Ссылка на группу:</td>
-                    <td><a href="@Model.GroupUrl">@Model.GroupUrl</a></td>
+                    <td>
+                        <a href="@Model.GroupUrl">@Model.GroupUrl</a>
+                    </td>
                 </tr>
             </table>
         </div>
     </div>
 
-    <div class="table-details">
+    <div class="block">
         <h1>Подробно</h1>
         <div class="content">
-            <table width="100%">
+            <table class="table-details">
                 <tr>
                     <th>Время</th>
                     <th>Подписчиков</th>
                 </tr>
-                @foreach (var record in Model.Records.Reverse())
+                @for (var i = 0; i < Model.RecordsCount - 1; i++)
                 {
                     <tr>
-                        <td style="text-align: center">@record.UpdatingTime.ToString("dd MMMM в HH:mm",CultureInfo.CreateSpecificCulture("ru-RU"))</td>
-                        <td style="text-align: center">@record.MembersCount</td>
+                        <td>@Model.Records[i].UpdatingTime.ToString("dd MMMM в HH:mm", CultureInfo.CreateSpecificCulture("ru-RU"))</td>
+                        <td>
+                            @Model.Records[i].MembersCount
+                            @if (Model.Records[i].Delta > 0)
+                            {
+                                <span class="up">(+@Model.Records[i].Delta)</span>
+                            }
+                            else if (Model.Records[i].Delta < 0)
+                            {
+                                <span class="down">(@Model.Records[i].Delta)</span>
+                            }
+                            else
+                            {
+                                <span>(+@Model.Records[i].Delta)</span>
+                            }
+                        </td>
                     </tr>
                 }
+                <tr>
+                    <td>@Model.Records.Last().UpdatingTime.ToString("dd MMMM в HH:mm", CultureInfo.CreateSpecificCulture("ru-RU"))</td>
+                    <td>@Model.Records.Last().MembersCount</td>
+                </tr>
             </table>
         </div>
 

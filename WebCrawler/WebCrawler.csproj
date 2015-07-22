@@ -107,14 +107,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\bg.png" />
     <Content Include="Content\Site.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\Somee.pubxml" />
     <None Include="Properties\PublishProfiles\vkcrawler.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -145,10 +140,10 @@
       <DependentUpon>StatisticDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataModel.cs" />
-    <Compile Include="Models\EFDataProvider.cs" />
-    <Compile Include="Models\EFGroupInfoProvider.cs" />
-    <Compile Include="Models\IDatabaseProvider.cs" />
-    <Compile Include="Models\IGroupInfoProvider.cs" />
+    <Compile Include="DAL\EFDataProvider.cs" />
+    <Compile Include="DAL\EFGroupInfoProvider.cs" />
+    <Compile Include="DAL\IDatabaseProvider.cs" />
+    <Compile Include="DAL\IGroupInfoProvider.cs" />
     <Compile Include="Models\StatisticModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsNinjectModule.cs" />
@@ -177,9 +172,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <EntityDeploy Include="StatisticDb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>StatisticDb.Designer.cs</LastGenOutput>
@@ -197,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="fonts\" />
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>

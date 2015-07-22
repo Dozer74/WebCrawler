@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace WebCrawler.Models
+namespace WebCrawler.DAL
 {
     internal class EFGroupInfoProvider : IGroupInfoProvider
     {

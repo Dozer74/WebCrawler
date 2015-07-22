@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using Ninject;
+﻿using Ninject;
 using System.Linq;
-using System.Web.Helpers;
 using System.Web.Mvc;
+using WebCrawler.DAL;
 using WebCrawler.Models;
 
 namespace WebCrawler.Controllers
@@ -20,74 +19,30 @@ namespace WebCrawler.Controllers
 
             var records = dataProvaire.GetAllRecords();
 
-            if (records.Count() == 0)
+            if (!records.Any())
             {
                 return EmptyModelView();
             }
-            else
-            {
-                return ParseStatistic(records, groupInfoProvider);
-            }
 
-            /*var stat = entities.Statistic.ToList();
-            var dates = stat.Select(st => st.UpdatingTime.ToLongDateString()+" в "+st.UpdatingTime.ToShortTimeString()).ToArray();
-            var values = stat.Select(st => st.MembersCount).ToArray();
-
-            if (values.Count() == 0)// В базе нет данных
-            {
-                var emptyModel = new StatisticModel
-                {
-                    GroupName = "База данных пуста!",
-                    GroupUrl = "База данных пуста!",
-                    RecordsCount = 0
-                };
-                return View(emptyModel);
-            }
-
-
-            var yMin = values.Min()-50;
-            var yMax = values.Max()+50;
-
-            new Chart(800, dates.Length*100)
-                .AddSeries(chartType: "bar",
-                    xValue: dates,
-                    yValues: values)
-                .SetYAxis(null, yMin, yMax)
-                .Save("~/Images/chart.png", "png");
-
-            var model = new StatisticModel
-            {
-                GroupName = entities.GroupInfo.FirstOrDefault()?.GroupName,
-                GroupUrl = entities.GroupInfo.FirstOrDefault()?.GroupUrl,
-                RecordsCount = dates.Length,
-                LastUpdateTime = stat.Max(st => st.UpdatingTime)
-            };
-
-            return View(model);*/
+            return ParseStatistic(records.ToArray(), groupInfoProvider);
         }
 
-        private ActionResult ParseStatistic(IEnumerable<DataModel> records, IGroupInfoProvider infoProvider)
+        private ActionResult ParseStatistic(DataModel[] records, IGroupInfoProvider infoProvider)
         {
+            for (int i = 1; i < records.Length; i++)
+            {
+                records[i].Delta = records[i].MembersCount - records[i - 1].MembersCount;
+            }
+
             var model = new StatisticModel
             {
                 GroupName = infoProvider.GetSavedGroupName(),
                 GroupUrl = infoProvider.GetSavedGroupUrl(),
-                RecordsCount = records.Count(),
+                RecordsCount = records.Length,
                 LastUpdateTime = records.Max(st => st.UpdatingTime),
-                Records = records
+                Records = records.Reverse().ToArray() //последние записи должны отображаться в начале
             };
-
-            /*var yMin = records.Min(r => r.MembersCount) - 50;
-            var yMax = records.Max(r => r.MembersCount) + 50;
-
-            var chart = new Chart(800, records.Count() * 100)
-                .AddSeries(chartType: "bar",
-                    xValue: records.Select(r => r.UpdatingTime),
-                    yValues: records.Select(r => r.MembersCount))
-                .SetYAxis(null, yMin, yMax);
-
-            chart.Save("~/Images/chart.png", "png");*/
-
+            
             return View("Index", model);
         }
 

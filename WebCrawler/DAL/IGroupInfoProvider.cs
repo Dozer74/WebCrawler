@@ -1,4 +1,4 @@
-﻿namespace WebCrawler.Models
+﻿namespace WebCrawler.DAL
 {
     public interface IGroupInfoProvider
     {

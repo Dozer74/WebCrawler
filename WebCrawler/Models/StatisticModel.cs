@@ -9,6 +9,6 @@ namespace WebCrawler.Models
         public int RecordsCount { get; set; }
         public DateTime LastUpdateTime { get; set; }
         public string GroupUrl { get; set; }
-        public IEnumerable<DataModel> Records { get; set; }  
+        public DataModel[] Records { get; set; }  
     }
 }

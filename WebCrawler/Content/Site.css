@@ -5,12 +5,6 @@
     padding-right: 15px;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
 
 .top-header {
 	float:left;
@@ -37,18 +31,16 @@ body {
 	width:400px;
 }
 
-.info-form .statistic {
+
+.block {
 	margin: 50px auto;
 	max-width:400px;
 	border-radius: 0 0 5px 5px;
-	background-color: #FFFFFF;
+    background-color: white;
 }
 
-.info-form .table-details {
-	background-color:#fff;
-}
 
-.info-form .content {
+.content {
 	padding-left: 5px;
 	padding-bottom: 5px;
 	padding-right: 5px;
@@ -65,8 +57,30 @@ body {
   	text-transform: uppercase
 }
 
+.table-details {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.table-details tr:first-child:hover{
+    background-color: white;
+}
+
+.table-details tr:hover{
+    background-color: #eee;
+}
+
 .content p {
     color: red;
     text-align: center;
 }
 
+
+.up {
+    color: green;
+}
+
+.down {
+    color: red;
+}

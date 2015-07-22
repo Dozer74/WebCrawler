@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using WebCrawler.Models;
 
-namespace WebCrawler.Models
+namespace WebCrawler.DAL
 {
     class EFDataProvider : IDatabaseProvider
     {

@@ -1,4 +1,5 @@
 ﻿using Ninject.Modules;
+using WebCrawler.DAL;
 using WebCrawler.Models;
 
 namespace WebCrawler
