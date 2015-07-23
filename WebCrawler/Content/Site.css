@@ -20,7 +20,7 @@
 
 body {
     background: url(Images/bg.png) repeat;
-    font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif;
     padding-bottom: 20px;
 }
 
