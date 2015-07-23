@@ -12,25 +12,20 @@
                 $.each(chartData.Records, function (i) {
                     data.addRow([chartData.Records[i].Date, chartData.Records[i].MembersCount]);
                 });
+
                 var options = {
-                    chart: {
-                        title: "Статистика"
-                    },
-                    legend: { position: "none" },
-                    axes: {
-                        x: {
-                            all: {
-                                range: {
-                                    min: chartData.Min,
-                                    max: chartData.Max
-                                }
-                            }
+                    bars: 'horizontal', // Required for Material Bar Charts.
+                    hAxis: {
+                        format: 'decimal',
+                        viewWindow: {
+                            min: chartData.Min,
+                            max: chartData.Max
                         }
-                    },
-                    bars: "horizontal"
-                };
+                    }
+                }
+
                 var chart = new google.charts.Bar(document.getElementById("chartdiv"));
-                chart.draw(data, options);
+                chart.draw(data, google.charts.Bar.convertOptions(options));
             },
             error: function (data) {
                 alert("Error In getting Records");
