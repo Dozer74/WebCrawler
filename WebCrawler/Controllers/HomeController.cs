@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using Ninject;
 using System.Linq;
@@ -73,7 +74,7 @@ namespace WebCrawler.Controllers
             var max = records.Max(r => r.MembersCount);
             var min = records.Min(r => r.MembersCount);
 
-            var delta = max - min;
+            var delta = Math.Max(max - min, 50);
 
             var chartData = new {Records = data, Min = min-delta/3, Max = max+delta/3};
 

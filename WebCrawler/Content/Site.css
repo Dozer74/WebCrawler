@@ -78,6 +78,7 @@ td {
 .content p {
     color: red;
     text-align: center;
+    line-height: 2;
 }
 
 .up { color: green; }

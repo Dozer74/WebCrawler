@@ -15,7 +15,7 @@
 
                 var options = {
                     legend: {position: "none"},
-                    height: chartData.Records.length * 50,
+                    height: Math.max(chartData.Records.length * 50, 150),
                     bars: "horizontal", // Required for Material Bar Charts.
                     hAxis: {
                         format: "decimal",
@@ -27,10 +27,10 @@
                 };
                 var chart = new google.charts.Bar(document.getElementById("chartdiv"));
                 chart.draw(data, google.charts.Bar.convertOptions(options));
-            },
-            error: function(data) {
-                alert("Error In getting Records");
             }
+            /*error: function(data) {
+                alert("Error In getting Records");
+            }*/
         });
     }
 
