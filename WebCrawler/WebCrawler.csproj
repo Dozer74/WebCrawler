@@ -112,12 +112,11 @@
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\Somee.pubxml" />
     <None Include="Properties\PublishProfiles\vkcrawler.pubxml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jQuery\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\jQuery\jquery-2.1.4.js" />
+    <Content Include="Scripts\jQuery\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jsapi.JS" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\MyChart.js" />
+    <Content Include="Scripts\chart.js" />
     <Content Include="StatisticDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>StatisticDb.edmx</DependentUpon>
@@ -129,7 +128,6 @@
       <LastGenOutput>StatisticDb.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
@@ -182,6 +180,7 @@
       <DependentUpon>StatisticDb.edmx</DependentUpon>
     </Content>
     <Content Include="Views\Home\EmptyModel.cshtml" />
+    <Content Include="Scripts\jQuery\jquery-2.1.4.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -191,8 +190,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="fonts\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
