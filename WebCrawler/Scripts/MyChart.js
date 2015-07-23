@@ -14,6 +14,7 @@
                 });
 
                 var options = {
+                    height: chartData.Records.length*50,
                     bars: 'horizontal', // Required for Material Bar Charts.
                     hAxis: {
                         format: 'decimal',
