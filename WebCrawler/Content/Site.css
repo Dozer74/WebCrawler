@@ -65,11 +65,13 @@ td {
     vertical-align: top;
 }
 
-.table-details { text-align: center; }
+.table-details {
+     text-align: center;
+}
 
 .table-details tr:first-child:hover { background-color: white; }
 
-.table-details tr:hover { background-color: #eee; }
+.table-details tr:hover { background-color: #ddd; }
 
 .table-split { 
     margin-top: 120px;

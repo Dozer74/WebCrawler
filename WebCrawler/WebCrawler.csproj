@@ -111,7 +111,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\Somee.pubxml" />
-    <None Include="Properties\PublishProfiles\vkcrawler.pubxml" />
+    <None Include="Properties\PublishProfiles\vkcrawler - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\vkcrawler - Web Deploy.pubxml" />
     <None Include="Scripts\jQuery\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jQuery\jquery-2.1.4.js" />
     <Content Include="Scripts\jQuery\jquery-2.1.4.min.js" />

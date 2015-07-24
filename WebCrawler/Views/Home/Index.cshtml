@@ -8,31 +8,29 @@
 
 <table class="table-split">
     <tr>
-        <td>
-            <div class="width: 35%; min-width: 400px;">
-                <div class="content">
-                    <h1>Статистика</h1>
-                    <table class="table-info" cellpadding="5">
-                        <tr>
-                            <td width="50%">Сейчас в базе:</td>
-                            <td width="50%">@Model.RecordsCount записей</td>
-                        </tr>
-                        <tr>
-                            <td>Последнее обновление:</td>
-                            <td>@Model.LastUpdateTime.ToString("dd MMMM в HH:mm", CultureInfo.CreateSpecificCulture("ru-RU"))</td>
-                        </tr>
-                        <tr>
-                            <td>Информация о группе:</td>
-                            <td>@Model.GroupName</td>
-                        </tr>
-                        <tr>
-                            <td>Ссылка на группу:</td>
-                            <td>
-                                <a href="@Model.GroupUrl">@Model.GroupUrl</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+        <td style="height: 1px">
+            <div class="content">
+                <h1>Статистика</h1>
+                <table class="table-info" cellpadding="5">
+                    <tr>
+                        <td width="50%">Сейчас в базе:</td>
+                        <td width="50%">@Model.RecordsCount записей</td>
+                    </tr>
+                    <tr>
+                        <td>Последнее обновление:</td>
+                        <td>@Model.LastUpdateTime.ToString("dd MMMM в HH:mm", CultureInfo.CreateSpecificCulture("ru-RU"))</td>
+                    </tr>
+                    <tr>
+                        <td>Информация о группе:</td>
+                        <td>@Model.GroupName</td>
+                    </tr>
+                    <tr>
+                        <td>Ссылка на группу:</td>
+                        <td>
+                            <a href="@Model.GroupUrl">@Model.GroupUrl</a>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </td>
         <td rowspan="2" td style="padding-left: 30px;">
@@ -47,7 +45,7 @@
         <td style="width: 35%; min-width: 400px;">
             <div class="content">
                 <h1>Подробно</h1>
-                <table class="table-details">
+                <table class="table-details" cellpadding="5">
                     <tr>
                         <th>Время</th>
                         <th>Подписчиков</th>
