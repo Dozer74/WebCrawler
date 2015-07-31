@@ -9,7 +9,13 @@ namespace WebCrawlerTests
     [TestFixture]
     public class DataProviderShould
     {
-        private readonly Mock<IDatabaseProvider> dataProviderMock = new Mock<IDatabaseProvider>();
+        private Mock<IDatabaseProvider> dataProviderMock;
+
+        [SetUp]
+        public void Init()
+        {
+            dataProviderMock = new Mock<IDatabaseProvider>();
+        }
 
         [Test]
         public void ReturnLatestRecords()
