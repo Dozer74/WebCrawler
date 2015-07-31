@@ -3,7 +3,7 @@
         $.ajax({
             type: "GET",
             contentType: "application/json; charset=utf-8",
-            url: "/Home/BuildChart",
+            url: "/Statistic/BuildChart",
             dataType: "json",
             success: function(chartData) {
                 var data = new google.visualization.DataTable();
