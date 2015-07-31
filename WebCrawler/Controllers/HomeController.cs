@@ -1,4 +1,7 @@
-﻿using Ninject;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using Ninject;
 using System.Linq;
 using System.Web.Mvc;
 using WebCrawler.DAL;
@@ -6,6 +9,12 @@ using WebCrawler.Models;
 
 namespace WebCrawler.Controllers
 {
+    public class TestModel
+    {
+        public string Date;
+        public int MembersCount;
+    }
+
     public class HomeController : Controller
     {
         readonly IKernel kernel = new StandardKernel(new SettingsNinjectModule());
@@ -14,10 +23,10 @@ namespace WebCrawler.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var dataProvaire = kernel.Get<IDatabaseProvider>();
+            var databaseProvider = kernel.Get<IDatabaseProvider>();
             var groupInfoProvider = kernel.Get<IGroupInfoProvider>();
 
-            var records = dataProvaire.GetAllRecords();
+            var records = databaseProvider.GetAllRecords();
 
             if (!records.Any())
             {
@@ -29,9 +38,11 @@ namespace WebCrawler.Controllers
 
         private ActionResult ParseStatistic(DataModel[] records, IGroupInfoProvider infoProvider)
         {
-            for (int i = 1; i < records.Length; i++)
+            for (int i = 0; i < records.Length; i++)
             {
-                records[i].Delta = records[i].MembersCount - records[i - 1].MembersCount;
+                if (i>0)
+                    records[i].Delta = records[i].MembersCount - records[i - 1].MembersCount;
+                records[i].UpdatingTime = ConvertToLocalTime(records[i].UpdatingTime);
             }
 
             var model = new StatisticModel
@@ -49,6 +60,33 @@ namespace WebCrawler.Controllers
         private ActionResult EmptyModelView()
         {
             return View("EmptyModel");
+        }
+
+        public JsonResult BuildChart()
+        {
+            var databaseProvider = kernel.Get<IDatabaseProvider>();
+            var records = databaseProvider.GetAllRecords().Reverse();
+
+            //ConvertToLocalTime(records.ToArray());//Время на сервере отличается от UTC+5
+
+            var data = records.Select(r => new
+            {
+                Date = ConvertToLocalTime(r.UpdatingTime).ToString("dd MMMM в HH:mm", CultureInfo.CreateSpecificCulture("ru-RU")),
+                r.MembersCount
+            });//Преобразуем данные для построения графика
+
+            var max = records.Max(r => r.MembersCount);
+            var min = records.Min(r => r.MembersCount);
+            var delta = Math.Max(max - min, 50);
+
+            var chartData = new {Records = data, Min = min-delta/3, Max = max+delta/3};
+
+            return Json(chartData, JsonRequestBehavior.AllowGet);
+        }
+
+        private DateTime ConvertToLocalTime(DateTime date)
+        {
+            return date.AddHours(5);
         }
     }
 }

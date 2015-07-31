@@ -20,7 +20,7 @@
 
 body {
     background: url(Images/bg.png) repeat;
-    font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif;
     padding-bottom: 20px;
 }
 
@@ -31,26 +31,23 @@ body {
 }
 
 
-.block {
-    background-color: white;
+.statistic-block {
+    margin: 120px 0 0;
     border-radius: 0 0 5px 5px;
     display: block;
-    margin: 20px auto;
-    width: 400px;
+    width: 35%;
+    min-width: 400px;
 }
 
-.block:first-child { margin: 120px auto auto; }
-
 .content {
-    border-radius: 0 0 5px 5px;
-    padding-bottom: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
+    background-color: white;
+    border-radius:0 0 5px 5px;
+    margin-bottom: 30px;
 }
 
 h1 {
-    background-color: #282830;
     border-radius: 5px 5px 0 0;
+    background-color: #282830;
     color: #fff;
     font-size: 16px;
     margin-top: 0;
@@ -59,21 +56,32 @@ h1 {
     text-transform: uppercase;
 }
 
-.table-details {
+table {
     border-collapse: collapse;
-    text-align: center;
     width: 100%;
+}
+
+td {
+    vertical-align: top;
+}
+
+.table-details {
+     text-align: center;
 }
 
 .table-details tr:first-child:hover { background-color: white; }
 
-.table-details tr:hover { background-color: #eee; }
+.table-details tr:hover { background-color: #ddd; }
+
+.table-split { 
+    margin-top: 120px;
+}
 
 .content p {
     color: red;
     text-align: center;
+    line-height: 2;
 }
-
 
 .up { color: green; }
 

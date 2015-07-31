@@ -50,7 +50,7 @@
                         <th>Время</th>
                         <th>Подписчиков</th>
                     </tr>
-                    @for (var i = 0; i < Model.RecordsCount - 1; i++)
+                    @for (var i = 0; i < Model.Records.Length - 1; i++)
                     {
                         <tr>
                             <td>@Model.Records[i].UpdatingTime.ToString("dd MMMM в HH:mm", CultureInfo.CreateSpecificCulture("ru-RU"))</td>
