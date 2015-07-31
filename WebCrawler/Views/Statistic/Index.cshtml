@@ -1,0 +1,84 @@
+﻿@using System.Globalization
+@using System.Linq
+@model WebCrawler.Models.StatisticModel
+@{
+    ViewBag.Title = "Crawler";
+}
+<script src="~/Scripts/chart.js"></script>
+
+<table class="table-split">
+    <tr>
+        <td style="height: 1px">
+            <div class="content">
+                <h1>Статистика</h1>
+                <table class="table-info" cellpadding="5">
+                    <tr>
+                        <td width="50%">Сейчас в базе:</td>
+                        <td width="50%">@Model.RecordsCount записей</td>
+                    </tr>
+                    <tr>
+                        <td>Последнее обновление:</td>
+                        <td>@Model.LastUpdateTime.ToString("dd MMMM в HH:mm", CultureInfo.CreateSpecificCulture("ru-RU"))</td>
+                    </tr>
+                    <tr>
+                        <td>Информация о группе:</td>
+                        <td>@Model.GroupName</td>
+                    </tr>
+                    <tr>
+                        <td>Ссылка на группу:</td>
+                        <td>
+                            <a href="@Model.GroupUrl">@Model.GroupUrl</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+        <td rowspan="2" td style="padding-left: 30px;">
+            <div class="content">
+                <h1>График</h1>
+                <div id="chartdiv" style="padding: 20px;"></div>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="width: 35%; min-width: 400px;">
+            <div class="content">
+                <h1>Подробно</h1>
+                <table class="table-details" cellpadding="5">
+                    <tr>
+                        <th>Время</th>
+                        <th>Подписчиков</th>
+                    </tr>
+                    @for (var i = 0; i < Model.Records.Length - 1; i++)
+                    {
+                        <tr>
+                            <td>@Model.Records[i].UpdatingTime.ToString("dd MMMM в HH:mm", CultureInfo.CreateSpecificCulture("ru-RU"))</td>
+                            <td>
+                                @Model.Records[i].MembersCount
+                                @if (Model.Records[i].Delta > 0)
+                                {
+                                    <span class="up">(+@Model.Records[i].Delta)</span>
+                                }
+                                else if (Model.Records[i].Delta < 0)
+                                {
+                                    <span class="down">(@Model.Records[i].Delta)</span>
+                                }
+                                else
+                                {
+                                    <span>(+@Model.Records[i].Delta)</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td>@Model.Records.Last().UpdatingTime.ToString("dd MMMM в HH:mm", CultureInfo.CreateSpecificCulture("ru-RU"))</td>
+                        <td>@Model.Records.Last().MembersCount</td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+        <td></td>
+    </tr>
+</table>
+
