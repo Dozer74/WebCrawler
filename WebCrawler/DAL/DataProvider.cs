@@ -9,12 +9,12 @@ namespace WebCrawler.Controllers
     {
         private readonly IDatabaseProvider databaseProvider;
         private readonly int maxRecordsCountInTable;
-        private readonly int maxRecordscountOnChart;
+        private readonly int maxRecords—ountOnChart;
 
-        public DataProvider(IDatabaseProvider databaseProvider, int maxRecordscountOnChart, int maxRecordsCountInTable)
+        public DataProvider(IDatabaseProvider databaseProvider, int maxRecords—ountOnChart, int maxRecordsCountInTable)
         {
             this.databaseProvider = databaseProvider;
-            this.maxRecordscountOnChart = maxRecordscountOnChart;
+            this.maxRecords—ountOnChart = maxRecords—ountOnChart;
             this.maxRecordsCountInTable = maxRecordsCountInTable;
         }
 
@@ -25,8 +25,7 @@ namespace WebCrawler.Controllers
 
         public IEnumerable<DataModel> GetRecordsForChart()
         {
-            return databaseProvider.GetAllRecords().Reverse().Take(maxRecordscountOnChart);
-
+            return databaseProvider.GetAllRecords().Reverse().Take(maxRecords—ountOnChart);
         }
 
         public IEnumerable<DataModel> GetRecordsForInfoTable()
