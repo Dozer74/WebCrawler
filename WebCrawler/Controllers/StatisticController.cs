@@ -46,7 +46,7 @@ namespace WebCrawler.Controllers
             return View("GetAll", model);
         }
 
-        private DataModel[] Precount(DataModel[] records)
+        public DataModel[] Precount(DataModel[] records)
         {
             for (var i = 0; i < records.Length; i++)
             {
